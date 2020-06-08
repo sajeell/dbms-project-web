@@ -1,0 +1,53 @@
+body {
+  color: black;
+}
+
+section {
+  margin-left: 6%;
+  margin-right: 8%;
+  padding: 0;
+}
+
+header {
+  display: flex;
+  margin-top: 1%;
+  max-width: 100%;
+}
+
+header div {
+  font-size: 20px;
+}
+
+header ul li {
+  display: inline-block;
+  margin: 0 20px;
+}
+
+#main {
+  margin-top: 150px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+#main .main-text {
+  font-size: 45px;
+  font-weight: 700;
+  line-height: 1.5;
+}
+
+span {
+  border-bottom: 2px solid #3ff1aa;
+}
+
+#main-logo-lg {
+  margin-left: 28%;
+}
+
+#tailor-span {
+  font-weight: lighter;
+}
+
+.Header-wrapper {
+  display: flex;
+  justify-content: space-between;
+}

@@ -1,0 +1,11 @@
+.Category-wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.cat-row {
+  margin: 5%;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+}

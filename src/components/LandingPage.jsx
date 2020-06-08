@@ -7,7 +7,7 @@ import logo from "./assets/crown.svg";
 const LandingPage = () => {
   return (
     <Router>
-      <div>
+      <div className="LandingPage-wrapper">
         <section id="main">
           <div className="main-text">
             <span>Crown Tailors.</span> <br /> where we reinvent <br />

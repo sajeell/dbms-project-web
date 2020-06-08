@@ -62,6 +62,8 @@ const DressDetails = () => {
               multiline
               variant="outlined"
             />
+          </div>
+          <div className="row-item">
             <TextField
               id="outlined-textarea"
               label="Collar"
@@ -80,6 +82,8 @@ const DressDetails = () => {
               multiline
               variant="outlined"
             />
+          </div>
+          <div className="row-item">
             <TextField
               id="outlined-textarea"
               label="Width"

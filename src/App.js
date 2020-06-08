@@ -7,10 +7,11 @@ import Category from "./components/Category";
 import Footer from "./components/Footer";
 import Shop from "./components/Shop";
 import DressDetails from "./components/DressDetails";
-
-import "./App.css";
 import Cart from "./components/Cart";
 import BillingDetails from "./components/BillingDetails";
+import OrderConfirm from "./components/OrderConfirm";
+
+import "./App.css";
 
 function App() {
   return (
@@ -35,6 +36,9 @@ function App() {
           </Route>
           <Route exact path="/billing-details">
             <BillingDetails />
+          </Route>
+          <Route exact path="/order-confirm">
+            <OrderConfirm />
           </Route>
         </Switch>
         <Footer />

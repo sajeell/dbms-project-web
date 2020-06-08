@@ -16,6 +16,7 @@ header {
 
 header div {
   font-size: 20px;
+  
 }
 
 header ul li {
@@ -33,6 +34,7 @@ header ul li {
   font-size: 45px;
   font-weight: 700;
   line-height: 1.5;
+  margin-left: 80px;
 }
 
 span {
@@ -40,7 +42,7 @@ span {
 }
 
 #main-logo-lg {
-  margin-left: 28%;
+  margin-left: 10%;
 }
 
 #tailor-span {
@@ -49,11 +51,23 @@ span {
 
 .Header-wrapper {
   display: flex;
-justify-content: space-around;
+  justify-content: space-around;
 }
 
-.header-buttons{
+.header-buttons {
   margin-left: 300px;
   margin-top: 23px;
-  
+}
+
+.LandingPage-wrapper {
+  margin-bottom: 100px;
+}
+
+.particles {
+  position: fixed;
+  right: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: -1;
 }

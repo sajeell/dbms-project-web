@@ -1,18 +1,15 @@
 .Cart-wrapper {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: center;
 }
 
 .Cart-wrapper span {
   border-bottom: 0;
 }
 
-.Cart-wrapper button:active {
-  border: 0;
-}
-
 .image {
-  margin: 3%;
+  margin-right: 20%;
+  margin-top: 10%;
   width: 600px;
 }
 .measurements {
@@ -82,4 +79,8 @@
   color: white;
 
   background-color: black;
+}
+
+.row-item {
+  margin-left: 2%;
 }

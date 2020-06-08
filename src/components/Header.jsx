@@ -10,11 +10,11 @@ const Header = () => {
     <Router forceRefresh="true">
       <div>
         <section>
-          <header>
+          <header className="Header-wrapper">
             <div className="">
               <img src={logo} width="100" alt="logo"></img>
             </div>
-            <div className="Header-wrapper">
+            <div className="header-buttons">
               <ul>
                 <Link to="/">
                   <li>HOME</li>

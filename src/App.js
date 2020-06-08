@@ -9,6 +9,8 @@ import Shop from "./components/Shop";
 import DressDetails from "./components/DressDetails";
 
 import "./App.css";
+import Cart from "./components/Cart";
+import BillingDetails from "./components/BillingDetails";
 
 function App() {
   return (
@@ -27,6 +29,12 @@ function App() {
           </Route>
           <Route exact path="/dress-details">
             <DressDetails />
+          </Route>
+          <Route exact path="/cart">
+            <Cart />
+          </Route>
+          <Route exact path="/billing-details">
+            <BillingDetails />
           </Route>
         </Switch>
         <Footer />

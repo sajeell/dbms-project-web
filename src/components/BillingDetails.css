@@ -1,0 +1,110 @@
+.BillingDetails-wrapper {
+  text-align: center;
+  margin-top: 2%;
+  margin-bottom: 160px;
+  display: flex;
+}
+
+.BillingDetails-wrapper span {
+  border-bottom: 0;
+}
+
+.payment-option {
+  border: 1px solid gray;
+  width: 310px;
+  height: 80px;
+  margin-left: 170px;
+  margin-top: 50px;
+}
+
+.payment-option-header {
+  background-color: lightgrey;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bolder;
+  font-size: 16px;
+}
+
+.radio-button {
+  margin-top: 10px;
+  font-size: 16px;
+}
+
+.address-details {
+  margin-left: 300px;
+  margin-top: 45px;
+}
+.address-row-1 {
+  display: flex;
+  margin-bottom: 2%;
+}
+
+.row-item-1 {
+  margin-right: 2%;
+}
+
+#first {
+  height: 45px;
+  width: 200px;
+  padding-left: 5%;
+}
+
+#last {
+  height: 45px;
+  width: 200px;
+  padding-left: 5%;
+}
+
+#address {
+  height: 70px;
+  width: 407px;
+  padding-left: 2%;
+}
+
+.address-row-2 {
+  display: flex;
+  margin-bottom: 2%;
+}
+
+.address-row-3 {
+  display: flex;
+}
+
+.row-item-4 {
+  margin-right: 2%;
+}
+
+#city {
+  height: 45px;
+  width: 200px;
+  padding-left: 5%;
+}
+
+#zip {
+  height: 45px;
+  width: 200px;
+  padding-left: 5%;
+}
+
+#order {
+  font-weight: bold;
+  font-size: 18px;
+  margin: 5%;
+  width: 180px;
+  padding: 10px;
+  height: 45px;
+  border: 0;
+  color: white;
+  background-color: black;
+  border-radius: 10px;
+}
+
+#address-heading {
+  margin-bottom: 5%;
+}
+
+.address-details input {
+  font-size: large;
+}

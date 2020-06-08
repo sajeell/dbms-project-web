@@ -49,5 +49,11 @@ span {
 
 .Header-wrapper {
   display: flex;
-  justify-content: space-between;
+justify-content: space-around;
+}
+
+.header-buttons{
+  margin-left: 300px;
+  margin-top: 23px;
+  
 }

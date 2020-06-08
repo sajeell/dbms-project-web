@@ -1,0 +1,51 @@
+.Cart-wrapper {
+  max-width: 70%;
+  margin-left: 15%;
+  margin-top: 2%;
+  margin-bottom: 5%;
+}
+
+.dress-image {
+  width: 100px;
+}
+
+.dress-desc {
+  margin: 10px;
+}
+
+.table-row {
+  display: flex;
+  align-items: center;
+}
+
+#payment {
+  font-weight: bold;
+  font-size: 18px;
+  margin: 2%;
+  width: 200px;
+  padding: 10px;
+  height: 45px;
+  border: 0;
+  color: white;
+  background-color: black;
+  margin-left: 75%;
+}
+
+.Cart-wrapper button {
+  border-radius: 10px;
+}
+
+.Cart-wrapper button:active {
+  border: 0px;
+}
+
+.price-remove {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  margin-left: 65px;
+}
+
+#remove-button{
+    cursor: pointer;
+}

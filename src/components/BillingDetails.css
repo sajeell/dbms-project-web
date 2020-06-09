@@ -13,7 +13,7 @@
   border: 1px solid gray;
   width: 310px;
   height: 80px;
-  margin-left: 170px;
+  margin-left: 140px;
   margin-top: 50px;
 }
 
@@ -34,7 +34,7 @@
 }
 
 .address-details {
-  margin-left: 300px;
+  margin-left: 140px;
   margin-top: 45px;
 }
 .address-row-1 {
@@ -63,7 +63,17 @@
   width: 407px;
   padding-left: 2%;
 }
+#phone {
+  height: 45px;
+  width: 407px;
+  padding-left: 2%;
+}
 
+#email {
+  height: 45px;
+  width: 407px;
+  padding-left: 2%;
+}
 .address-row-2 {
   display: flex;
   margin-bottom: 2%;

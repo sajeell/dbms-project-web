@@ -19,6 +19,7 @@
     "react-preloaders": "^3.0.3",
     "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.1",
+    "react-toastify": "^6.0.5",
     "semantic-ui-react": "^0.88.2"
   },
   "scripts": {

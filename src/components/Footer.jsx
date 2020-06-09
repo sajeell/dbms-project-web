@@ -3,7 +3,7 @@ import React from "react";
 import "./styles/bootstrap-4.1.2/bootstrap.min.css";
 import "./plugins/font-awesome-4.7.0/css/font-awesome.min.css";
 import "./styles/main_styles.css";
-import "./styles/responsive.css";
+// import "./styles/responsive.css";
 
 import logo2 from "./assets/crown.svg";
 
@@ -22,7 +22,7 @@ const Footer = () => {
                         <div className="footer_logo_icon">
                           <img src={logo2} alt="" />
                         </div>
-                        <div>Crown Tailors</div>
+                        <div>Stitchers101</div>
                       </div>
                     </a>
                   </div>

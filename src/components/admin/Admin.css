@@ -1,0 +1,39 @@
+body {
+  color: black;
+}
+
+section {
+  margin-left: 6%;
+  margin-right: 8%;
+  padding: 0;
+}
+
+header {
+  display: flex;
+  margin-top: 1%;
+  max-width: 100%;
+}
+
+header div {
+  font-size: 20px;
+}
+
+header ul li {
+  display: inline-block;
+  margin: 0 20px;
+}
+
+.Header-wrapper {
+  display: flex;
+  justify-content: space-around;
+}
+
+.header-buttons {
+  margin-left: 300px;
+  margin-top: 23px;
+}
+
+.AdminSignin-wrapper{
+  width: 350px;
+  margin-left: 400px;
+}

@@ -79,6 +79,11 @@
   margin-bottom: 2%;
 }
 
+.address-row-4 {
+  display: flex;
+  margin-top: 2%;
+}
+
 .address-row-3 {
   display: flex;
 }
@@ -97,6 +102,13 @@
   height: 45px;
   width: 200px;
   padding-left: 5%;
+}
+
+#mobile {
+  height: 45px;
+  width: 407px;
+  padding-left: 2%;
+  margin-top: 2%;
 }
 
 #order {

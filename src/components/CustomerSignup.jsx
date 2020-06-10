@@ -1,7 +1,7 @@
 import React, { Fragment, useState } from "react";
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
-
+toast.configure();
 const CustomerSignup = ({ setAuth }) => {
   const [inputs, setInputs] = useState({
     email: "",
@@ -19,7 +19,7 @@ const CustomerSignup = ({ setAuth }) => {
     try {
       const body = { email, password, name };
       const response = await fetch(
-        "http://localhost:5000/authentication/register",
+        "http://localhost:5000/customer/authentication/register",
         {
           method: "POST",
           headers: {
@@ -30,9 +30,9 @@ const CustomerSignup = ({ setAuth }) => {
       );
       const parseRes = await response.json();
       if (parseRes.jwtToken) {
-        localStorage.setItem("token", parseRes.jwtToken);
+        localStorage.setItem("customer_token", parseRes.jwtToken);
         setAuth(true);
-        toast.success("Register Successfully");
+        toast.success("Customer Registered Successfully");
       } else {
         setAuth(false);
         toast.error(parseRes);
@@ -45,7 +45,6 @@ const CustomerSignup = ({ setAuth }) => {
   return (
     <Fragment>
       <div
-        className="CustomerSignin-wrapper"
         style={{ width: "30%", marginLeft: "35%",marginBottom:"10.5%" }}
       >
         <h1 className="mt-5 text-center">Register</h1>

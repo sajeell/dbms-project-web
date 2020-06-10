@@ -1,0 +1,43 @@
+.WomenProduct-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 3%;
+}
+
+.WomenProduct-wrapper span {
+  border-bottom: 0;
+}
+
+.MenProduct-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 3%;
+}
+
+.MenProduct-wrapper span {
+  border-bottom: 0;
+}
+
+.KidsProduct-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 3%;
+}
+
+.KidsProduct-wrapper span {
+  border-bottom: 0;
+}
+
+.SuitingsProduct-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 3%;
+}
+
+.SuitingsProduct-wrapper span {
+  border-bottom: 0;
+}

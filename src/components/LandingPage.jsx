@@ -4,7 +4,7 @@ import { Switch, Route, Redirect } from "react-router-dom";
 import Header from "./Header.jsx";
 import Footer from "./Footer.jsx";
 import Category from "./Category.jsx";
-import Shop from "./Shop.jsx";
+import WomenProduct from "./WomenProduct.jsx";
 import DressDetails from "./DressDetails.jsx";
 import BillingDetails from "./BillingDetails.jsx";
 import OrderConfirm from "./OrderConfirm.jsx";
@@ -15,14 +15,20 @@ import Main from "./Main.jsx";
 import SignedHeader from "./SignedHeader.jsx";
 import CustomerSignin from "./CustomerSignin.jsx";
 import CustomerSignup from "./CustomerSignup.jsx";
+import MenProduct from "./MenProduct.jsx";
+import KidsProduct from "./KidsProduct.jsx";
+import SuitingsProduct from "./SuitingsProduct.jsx";
 
 const LandingPage = () => {
   const checkAuthenticated = async () => {
     try {
-      const res = await fetch("http://localhost:5000/authentication/verify", {
-        method: "POST",
-        headers: { jwt_token: localStorage.token },
-      });
+      const res = await fetch(
+        "http://localhost:5000/customer/authentication/verify",
+        {
+          method: "POST",
+          headers: { jwt_token: localStorage.customer_token },
+        }
+      );
 
       const parseRes = await res.json();
 
@@ -43,53 +49,108 @@ const LandingPage = () => {
   };
 
   return (
-    <div className="LandingPage-wrapper">
-      {!isAuthenticated ? <Header /> : <SignedHeader />}
+    <div className='LandingPage-wrapper'>
+      {!isAuthenticated ? <Header /> : <SignedHeader setAuth={setAuth} />}
       <Switch>
         <Route
           exact
-          path="/register"
+          path='/register'
           render={(props) =>
             !isAuthenticated ? (
               <CustomerSignup {...props} setAuth={setAuth} />
             ) : (
-              <Redirect to="/signin" />
+              <Redirect to='/signin' />
             )
           }
         />
         <Route
           exact
-          path="/signin"
+          path='/signin'
           render={(props) =>
             !isAuthenticated ? (
               <CustomerSignin {...props} setAuth={setAuth} />
             ) : (
-              <Redirect to="/" />
+              <Redirect to='/' />
             )
           }
         />
 
-        <Route exact path="/">
+        <Route exact path='/'>
           <Main />
         </Route>
-        <Route exact path="/cart">
-          <Cart />
+
+        <Route
+          exact
+          path='/cart'
+          render={(props) =>
+            isAuthenticated ? (
+              <Cart {...props} setAuth={setAuth} />
+            ) : (
+              <Redirect to='/signin' />
+            )
+          }
+        />
+
+        <Route
+          exact
+          path='/shop'
+          render={(props) =>
+            isAuthenticated ? (
+              <Category {...props} setAuth={setAuth} />
+            ) : (
+              <Redirect to='/signin' />
+            )
+          }
+        />
+
+        <Route
+          exact
+          path='/order-confirm'
+          render={(props) =>
+            isAuthenticated ? (
+              <OrderConfirm {...props} setAuth={setAuth} />
+            ) : (
+              <Redirect to='/signin' />
+            )
+          }
+        />
+
+        <Route
+          exact
+          path='/billing-details'
+          render={(props) =>
+            isAuthenticated ? (
+              <BillingDetails {...props} setAuth={setAuth} />
+            ) : (
+              <Redirect to='/signin' />
+            )
+          }
+        />
+        <Route
+          exact
+          path='/dress-details'
+          render={(props) =>
+            isAuthenticated ? (
+              <DressDetails {...props} setAuth={setAuth} />
+            ) : (
+              <Redirect to='/signin' />
+            )
+          }
+        />
+
+        <Route exact path='/women-product'>
+          <WomenProduct />
         </Route>
-        <Route exact path="/shop">
-          <Category />
+        <Route exact path='/men-product'>
+          <MenProduct />
         </Route>
-        <Route exact path="/order-confirm">
-          <OrderConfirm />
+        <Route exact path='/kids-product'>
+          <KidsProduct />
         </Route>
-        <Route exact path="/billing-details">
-          <BillingDetails />
+        <Route exact path='/suitings-product'>
+          <SuitingsProduct />
         </Route>
-        <Route exact path="/women">
-          <Shop />
-        </Route>
-        <Route exact path="/dress-details">
-          <DressDetails />
-        </Route>
+        
       </Switch>
       <Footer />
     </div>

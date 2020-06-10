@@ -1,31 +1,7 @@
-import React from "react";
+import React, { Fragment, useState, useEffect } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import ButtonBase from "@material-ui/core/ButtonBase";
 import Typography from "@material-ui/core/Typography";
-
-const images = [
-  {
-    url: "https://downloader.la/temp/5edd595703c78.jpg",
-    title: "Women",
-    width: "30%",
-  },
-  {
-    url: "https://downloader.la/temp/5edd596d8e3ff.jpg",
-    title: "Suiting",
-    width: "30%",
-  },
-  {
-    url: "https://downloader.la/temp/5edd596339170.jpg",
-    title: "Kids",
-    width: "30%",
-  },
-  {
-    url:
-      "https://lh3.googleusercontent.com/XP08mAKwSKQq2VIXphhvUublQzihNDxkuI44TXuVecaOtgLCzwvolXn4vJR6MmyAVJeVB8jqjz9tWallessep53q4ZoaqXk2y-AKlgt5Jg2AqiLjCSeLMRXS1Xv3WAqIWR0N6Bll9KE4YSZcP2JxJ2RYQwsJwN912YA2liYTQsC0KYpDDx4sfKYdcFhXeDxwJX1Uo7zsRzxK15yLnXHZGJ_8qsMWx--wyYnPysMBedvqyTj_PIkvhl1lR6PPCaKNUO52z603YWT60TR35zaRr0JOQydBznzfNlKya8s2eGyA8EmtyuHUrg58MaRm1wghqmCbUqeitbFUYBV9rw8zdygyEqr-ek-5qkZuNZ1GhyGoKi2qpJe6cPmooLtE9LlAUUUBkHSgdiiqA20TYz-zmZzHXUIvgP667eYxlefss82G-DaXGtpiYvafN4bR65NvAz3TxyYzYNqu_GUdG0MVugX-OVRxdEFuRvN6HJUTIbSCNRr-52TgDBPCVLAnWFUw-QK0mZH7Z5JvSWRMJLbcy-8MdCLoLUX1mCJTjjqRsnEB9iw04Q8OUp7OfpkheuRlMCo_qc4xuhEf7hefuhhUthMaD7JOLJbz3TX6kbfMcsZ5c23nJwtHsuH_MgJGRz1UWAEZpjhIgkLqmDqOreSJUuWPtwGuMgPPynNT9Qc9D-eya9Jg0_zgb09BZd_R=w944-h628-no?authuser=0",
-    title: "Casual Dress",
-    width: "30%",
-  },
-];
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -102,39 +78,59 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const Category4 = () => {
+  const [category, setCategory] = useState([]);
+
+  const getCategory = async () => {
+    try {
+      const response = await fetch("http://localhost:5000/category/4");
+      const jsonData = await response.json(); // Parser
+      setCategory(jsonData);
+    } catch (error) {
+      console.log(`Error Getting Category 2: ${error}`);
+    }
+  };
+
+  useEffect(() => {
+    getCategory();
+  }, []);
+
   const classes = useStyles();
 
   return (
-    <div className={classes.root}>
-      <ButtonBase
-        focusRipple
-        key={images[3].title}
-        className={classes.image}
-        focusVisibleClassName={classes.focusVisible}
-        style={{
-          width: "100%",
-        }}
-      >
-        <span
-          className={classes.imageSrc}
-          style={{
-            backgroundImage: `url(${images[3].url})`,
-          }}
-        />
-        <span className={classes.imageBackdrop} />
-        <span className={classes.imageButton}>
-          <Typography
-            component="span"
-            variant="subtitle1"
-            color="inherit"
-            className={classes.imageTitle}
+    <Fragment>
+      {category.map((item) => (
+        <div className={classes.root} key={item.id}>
+          <ButtonBase
+            focusRipple
+            key={item.name}
+            className={classes.image}
+            focusVisibleClassName={classes.focusVisible}
+            style={{
+              width: "100%",
+            }}
           >
-            {images[3].title}
-            <span className={classes.imageMarked} />
-          </Typography>
-        </span>
-      </ButtonBase>
-    </div>
+            <span
+              className={classes.imageSrc}
+              style={{
+                backgroundImage: `url(${item.picture_link})`,
+              }}
+            />
+            <span className={classes.imageBackdrop} />
+            <span className={classes.imageButton}>
+              <Typography
+                component='span'
+                variant='subtitle1'
+                color='inherit'
+                className={classes.imageTitle}
+              >
+                {item.name}
+                <span className={classes.imageMarked} />
+              </Typography>
+            </span>
+          </ButtonBase>
+        </div>
+      ))}
+    </Fragment>
   );
 };
 

@@ -2,9 +2,12 @@
   display: flex;
   justify-content: center;
 }
-
+.Category-wrapper span {
+  border-bottom: 0;
+}
 .cat-row {
-  margin: 5%;
+  margin-bottom: 10%;
+  margin-top: 5%;
   display: flex;
   justify-content: space-between;
   flex-direction: column;

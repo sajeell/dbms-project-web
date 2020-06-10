@@ -3,6 +3,7 @@
   margin-top: 2%;
   margin-bottom: 160px;
   display: flex;
+  justify-content: center;
 }
 
 .BillingDetails-wrapper span {
@@ -13,7 +14,6 @@
   border: 1px solid gray;
   width: 310px;
   height: 80px;
-  margin-left: 140px;
   margin-top: 50px;
 }
 
@@ -102,6 +102,7 @@
   height: 45px;
   width: 200px;
   padding-left: 5%;
+  margin-left: 3%;
 }
 
 #mobile {

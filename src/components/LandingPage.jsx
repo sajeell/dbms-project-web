@@ -5,7 +5,6 @@ import Header from "./Header.jsx";
 import Footer from "./Footer.jsx";
 import Category from "./Category.jsx";
 import WomenProduct from "./WomenProduct.jsx";
-import DressDetails from "./DressDetails.jsx";
 import BillingDetails from "./BillingDetails.jsx";
 import OrderConfirm from "./OrderConfirm.jsx";
 import Cart from "./Cart.jsx";
@@ -18,6 +17,10 @@ import CustomerSignup from "./CustomerSignup.jsx";
 import MenProduct from "./MenProduct.jsx";
 import KidsProduct from "./KidsProduct.jsx";
 import SuitingsProduct from "./SuitingsProduct.jsx";
+import MenDressDetails from "./MenDressDetails.jsx";
+import WomenDressDetails from "./WomenDressDetails.jsx";
+import SuitDetails from "./SuitDetails.jsx";
+import KidsDressDetails from "./KidsDressDetails.jsx";
 
 const LandingPage = () => {
   const checkAuthenticated = async () => {
@@ -128,16 +131,48 @@ const LandingPage = () => {
         />
         <Route
           exact
-          path='/dress-details'
+          path='/men-dress-details'
           render={(props) =>
             isAuthenticated ? (
-              <DressDetails {...props} setAuth={setAuth} />
+              <MenDressDetails {...props} setAuth={setAuth} />
             ) : (
               <Redirect to='/signin' />
             )
           }
         />
-
+        <Route
+          exact
+          path='/women-dress-details'
+          render={(props) =>
+            isAuthenticated ? (
+              <WomenDressDetails {...props} setAuth={setAuth} />
+            ) : (
+              <Redirect to='/signin' />
+            )
+          }
+        />
+        <Route
+          exact
+          path='/suit-details'
+          render={(props) =>
+            isAuthenticated ? (
+              <SuitDetails {...props} setAuth={setAuth} />
+            ) : (
+              <Redirect to='/signin' />
+            )
+          }
+        />
+        <Route
+          exact
+          path='/kids-dress-details'
+          render={(props) =>
+            isAuthenticated ? (
+              <KidsDressDetails {...props} setAuth={setAuth} />
+            ) : (
+              <Redirect to='/signin' />
+            )
+          }
+        />
         <Route exact path='/women-product'>
           <WomenProduct />
         </Route>
@@ -150,7 +185,6 @@ const LandingPage = () => {
         <Route exact path='/suitings-product'>
           <SuitingsProduct />
         </Route>
-        
       </Switch>
       <Footer />
     </div>

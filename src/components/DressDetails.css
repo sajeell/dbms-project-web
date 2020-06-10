@@ -1,14 +1,13 @@
-.Cart-wrapper {
+.DressDetails-wrapper {
   display: flex;
   justify-content: center;
 }
 
-.Cart-wrapper span {
+.DressDetails-wrapper span {
   border-bottom: 0;
 }
 
 .image {
-  margin-right: 20%;
   margin-top: 10%;
   width: 600px;
 }
@@ -77,10 +76,13 @@
   height: 52px;
   border: 0;
   color: white;
-
   background-color: black;
 }
 
 .row-item {
   margin-left: 2%;
+}
+.measurement-row-4 {
+
+  margin-bottom: 2%;
 }

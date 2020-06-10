@@ -68,7 +68,7 @@ const MenProduct = () => {
               </CardActionArea>
               <CardActions>
                 <Button size='small' color='primary'>
-                  <Link to='/dress-details'>Add To Cart</Link>
+                  <Link to='/men-dress-details'>Add To Cart</Link>
                 </Button>
               </CardActions>
             </Card>

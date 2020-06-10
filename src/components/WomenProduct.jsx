@@ -82,7 +82,7 @@ const WomenProduct = () => {
                     }
                   }}
                 >
-                  <Link to='/dress-details'>Order</Link>
+                  <Link to='/women-dress-details'>Order</Link>
                 </Button>
               </CardActions>
             </Card>

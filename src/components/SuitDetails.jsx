@@ -13,7 +13,7 @@ import "./DressDetails.css";
 //   },
 // }));
 
-const DressDetails = () => {
+const SuitDetails = () => {
   //    const classes = useStyles();
   //   const [value, setValue] = React.useState("Controlled");
 
@@ -47,7 +47,7 @@ const DressDetails = () => {
 
   return (
     <Fragment>
-      <div className='Cart-wrapper'>
+      <div className='DressDetails-wrapper'>
         {products.map((item) => (
           <div className='image' key={item.id}>
             <img alt='Dress' src={item.picture_link}></img>
@@ -173,4 +173,4 @@ const DressDetails = () => {
   );
 };
 
-export default DressDetails;
+export default SuitDetails;

@@ -85,7 +85,7 @@ const LandingPage = () => {
         <Route
           exact
           path='/cart'
-          render={(props) =>
+          component={(props) =>
             isAuthenticated ? (
               <Cart {...props} setAuth={setAuth} />
             ) : (

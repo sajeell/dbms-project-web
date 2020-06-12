@@ -1,9 +1,9 @@
-import React, { useState, Fragment, useEffect } from "react";
+import React, {useState, Fragment, useEffect} from 'react';
 // import { makeStyles } from "@material-ui/core/styles";
-import TextField from "@material-ui/core/TextField";
-import { Link } from "react-router-dom";
-import "./DressDetails.css";
-import { toast } from "react-toastify";
+import TextField from '@material-ui/core/TextField';
+import {Link} from 'react-router-dom';
+import './DressDetails.css';
+import {toast} from 'react-toastify';
 
 toast.configure();
 const WomenDressDetails = () => {
@@ -26,116 +26,91 @@ const WomenDressDetails = () => {
   const [quantity, setQuantity] = useState(1);
   const [products, setProduct] = useState([]);
   const [credential, setCredential] = useState([]);
-  const [email, setEmail] = useState("");
+  const [email, setEmail] = useState('');
   // const [product_id, setProductId] = useState("");
   // const [price, setPrice] = useState("");
 
-  const handleShoulder = (event) => {
+  const handleShoulder = event => {
     event.preventDefault();
     setShoulder(event.target.value);
   };
-  const handleChest = (event) => {
+  const handleChest = event => {
     event.preventDefault();
     setChest(event.target.value);
   };
 
-  const handleWaist = (event) => {
+  const handleWaist = event => {
     event.preventDefault();
     setWaist(event.target.value);
   };
 
-  const handleSleevesLength = (event) => {
+  const handleSleevesLength = event => {
     event.preventDefault();
     setSleevesLength(event.target.value);
   };
 
-  const handleSleevesOpening = (event) => {
+  const handleSleevesOpening = event => {
     event.preventDefault();
     setSleevesOpening(event.target.value);
   };
 
-  const handleArmHole = (event) => {
+  const handleArmHole = event => {
     event.preventDefault();
     setArmHole(event.target.value);
   };
 
-  const handleShirtLength = (event) => {
+  const handleShirtLength = event => {
     event.preventDefault();
     setShirtLength(event.target.value);
   };
 
-  const handleDaman = (event) => {
+  const handleDaman = event => {
     event.preventDefault();
     setDaman(event.target.value);
   };
 
-  const handleTrouserFly = (event) => {
+  const handleTrouserFly = event => {
     event.preventDefault();
     setTrouserFly(event.target.value);
   };
 
-  const handleTrouserBottom = (event) => {
+  const handleTrouserBottom = event => {
     event.preventDefault();
     setTrouserBottom(event.target.value);
   };
 
-  const handleTrouserHip = (event) => {
+  const handleTrouserHip = event => {
     event.preventDefault();
     setTrouserHip(event.target.value);
   };
 
-  const handleTrouserThy = (event) => {
+  const handleTrouserThy = event => {
     event.preventDefault();
     setTrouserThy(event.target.value);
   };
 
-  const handleTrouserLength = (event) => {
+  const handleTrouserLength = event => {
     event.preventDefault();
     setTrouserLength(event.target.value);
   };
 
-  const handleTrouserKnee = (event) => {
+  const handleTrouserKnee = event => {
     event.preventDefault();
     setTrouserKnee(event.target.value);
   };
 
-  const handleTrouserWaist = (event) => {
+  const handleTrouserWaist = event => {
     event.preventDefault();
     setTrouserWaist(event.target.value);
   };
 
-  const handleOther = (event) => {
+  const handleOther = event => {
     event.preventDefault();
     setOther(event.target.value);
   };
 
   const submitForm = async (ema, product_id, price) => {
     try {
-      console.log(`Email: ${ema}`);
-
-      console.log(
-        ema,
-        product_id,
-        quantity,
-        price,
-        shoulder,
-        chest,
-        waist,
-        sleevesLength,
-        sleevesOpening,
-        armHole,
-        shirtLength,
-        daman,
-        trouserWaist,
-        trouserFly,
-        trouserLength,
-        trouserHip,
-        trouserThy,
-        trouserBottom,
-        trouserKnee,
-        other
-      );
-
       const body = {
         ema,
         product_id,
@@ -158,36 +133,36 @@ const WomenDressDetails = () => {
         trouserKnee,
         other,
       };
-      const res = await fetch("http://localhost:5000/order/women", {
-        method: "POST",
+      const res = await fetch('http://localhost:5000/order/women', {
+        method: 'POST',
         headers: {
-          "Content-type": "application/json",
+          'Content-type': 'application/json',
         },
         body: JSON.stringify(body),
       });
 
       const parseData = await res.json();
 
-      setTrouserHip("");
-      setTrouserBottom("");
-      setShoulder("");
-      setChest("");
-      setWaist("");
-      setSleevesLength("");
-      setSleevesOpening("");
-      setArmHole("");
-      setShirtLength("");
-      setDaman("");
-      setTrouserFly("");
-      setTrouserThy("");
-      setTrouserLength("");
-      setTrouserKnee("");
-      setTrouserWaist("");
-      setOther("");
-      toast.success("Product added to cart");
+      setTrouserHip('');
+      setTrouserBottom('');
+      setShoulder('');
+      setChest('');
+      setWaist('');
+      setSleevesLength('');
+      setSleevesOpening('');
+      setArmHole('');
+      setShirtLength('');
+      setDaman('');
+      setTrouserFly('');
+      setTrouserThy('');
+      setTrouserLength('');
+      setTrouserKnee('');
+      setTrouserWaist('');
+      setOther('');
+      toast.success('Product added to cart');
     } catch (error) {
       console.error(error);
-      console.error("Error in Posting Women Dress");
+      console.error('Error in Posting Women Dress');
     }
   };
 
@@ -195,10 +170,10 @@ const WomenDressDetails = () => {
     try {
       const product = await fetch(
         `http://localhost:5000/single-product/${localStorage.getItem(
-          "product_id"
+          'product_id'
         )}`,
         {
-          method: "GET",
+          method: 'GET',
         }
       );
       const jsonData = await product.json(); // Parser
@@ -210,15 +185,15 @@ const WomenDressDetails = () => {
 
   const getProfile = async () => {
     try {
-      const res = await fetch("http://localhost:5000/credential/", {
-        method: "POST",
-        headers: { jwt_token: localStorage.getItem("customer_token") },
+      const res = await fetch('http://localhost:5000/credential/', {
+        method: 'POST',
+        headers: {jwt_token: localStorage.getItem('customer_token')},
       });
 
       const parseData = await res.json();
       setCredential(parseData);
 
-      credential.map((item) => {
+      credential.map(item => {
         console.log(`Setting email:     ${item.email}`);
         setEmail(item.email);
       });
@@ -234,286 +209,283 @@ const WomenDressDetails = () => {
 
   return (
     <Fragment>
-      {credential.map((cred) =>
-        products.map((item) => (
-          <div className='DressDetails-wrapper' key={item.id}>
-            <div className='image'>
-              <img alt='Dress' src={item.picture_link} width='420px'></img>
+      {credential.map(cred =>
+        products.map(item => (
+          <div className="DressDetails-wrapper" key={item.id}>
+            <div className="image">
+              <img alt="Dress" src={item.picture_link} width="420px"></img>
             </div>
 
-            <div className='measurements'>
-              <div className='measurements-heading'>
+            <div className="measurements">
+              <div className="measurements-heading">
                 <h1>Suit Details</h1>
               </div>
               <p>{item.stock} pieces left</p>
-              <div className='measurement-row-1'>
-                <div className='row-item'>
+              <div className="measurement-row-1">
+                <div className="row-item">
                   <TextField
-                    id='outlined-textarea'
-                    label='Shoulder'
-                    placeholder='In Inches'
+                    id="outlined-textarea"
+                    label="Shoulder"
+                    placeholder="In Inches"
                     multiline
-                    variant='outlined'
+                    variant="outlined"
                     value={shoulder}
-                    onChange={(e) => {
+                    onChange={e => {
                       handleShoulder(e);
                     }}
                   />
                 </div>
-                <div className='row-item'>
+                <div className="row-item">
                   <TextField
-                    id='outlined-textarea'
-                    label='Chest'
-                    placeholder='In Inches'
+                    id="outlined-textarea"
+                    label="Chest"
+                    placeholder="In Inches"
                     multiline
-                    variant='outlined'
+                    variant="outlined"
                     value={chest}
-                    onChange={(e) => {
+                    onChange={e => {
                       handleChest(e);
                     }}
                   />
                 </div>
               </div>
-              <div className='measurement-row-2'>
-                <div className='row-item'>
+              <div className="measurement-row-2">
+                <div className="row-item">
                   <TextField
-                    id='outlined-textarea'
-                    label='Waist'
-                    placeholder='In Inches'
+                    id="outlined-textarea"
+                    label="Waist"
+                    placeholder="In Inches"
                     multiline
-                    variant='outlined'
+                    variant="outlined"
                     value={waist}
-                    onChange={(e) => {
+                    onChange={e => {
                       handleWaist(e);
                     }}
                   />
                 </div>
-                <div className='row-item'>
+                <div className="row-item">
                   <TextField
-                    id='outlined-textarea'
-                    label='Sleeves Length'
-                    placeholder='In Inches'
+                    id="outlined-textarea"
+                    label="Sleeves Length"
+                    placeholder="In Inches"
                     multiline
-                    variant='outlined'
+                    variant="outlined"
                     value={sleevesLength}
-                    onChange={(e) => {
+                    onChange={e => {
                       handleSleevesLength(e);
                     }}
                   />
                 </div>
               </div>
-              <div className='measurement-row-3'>
-                <div className='row-item'>
+              <div className="measurement-row-3">
+                <div className="row-item">
                   <TextField
-                    id='outlined-textarea'
-                    label='Sleeves Opening'
-                    placeholder='In Inches'
+                    id="outlined-textarea"
+                    label="Sleeves Opening"
+                    placeholder="In Inches"
                     multiline
-                    variant='outlined'
+                    variant="outlined"
                     value={sleevesOpening}
-                    onChange={(e) => {
+                    onChange={e => {
                       handleSleevesOpening(e);
                     }}
                   />
                 </div>
-                <div className='row-item'>
+                <div className="row-item">
                   <TextField
-                    id='outlined-textarea'
-                    label='Arm Hole'
-                    placeholder='In Inches'
+                    id="outlined-textarea"
+                    label="Arm Hole"
+                    placeholder="In Inches"
                     multiline
-                    variant='outlined'
+                    variant="outlined"
                     value={armHole}
-                    onChange={(e) => {
+                    onChange={e => {
                       handleArmHole(e);
                     }}
                   />
                 </div>
               </div>
-              <div className='measurement-row-3'>
-                <div className='row-item'>
+              <div className="measurement-row-3">
+                <div className="row-item">
                   <TextField
-                    id='outlined-textarea'
-                    label='Shirt Length'
-                    placeholder='In Inches'
+                    id="outlined-textarea"
+                    label="Shirt Length"
+                    placeholder="In Inches"
                     multiline
-                    variant='outlined'
+                    variant="outlined"
                     value={shirtLength}
-                    onChange={(e) => {
+                    onChange={e => {
                       handleShirtLength(e);
                     }}
                   />
                 </div>
-                <div className='row-item'>
+                <div className="row-item">
                   <TextField
-                    id='outlined-textarea'
-                    label='Daman'
-                    placeholder='In Inches'
+                    id="outlined-textarea"
+                    label="Daman"
+                    placeholder="In Inches"
                     multiline
-                    variant='outlined'
+                    variant="outlined"
                     value={daman}
-                    onChange={(e) => {
+                    onChange={e => {
                       handleDaman(e);
                     }}
                   />
                 </div>
               </div>
-              <div className='measurement-row-3'>
-                <div className='row-item'>
+              <div className="measurement-row-3">
+                <div className="row-item">
                   <TextField
-                    id='outlined-textarea'
-                    label='Trouser Waist'
-                    placeholder='In Inches'
+                    id="outlined-textarea"
+                    label="Trouser Waist"
+                    placeholder="In Inches"
                     multiline
-                    variant='outlined'
+                    variant="outlined"
                     value={trouserWaist}
-                    onChange={(e) => {
+                    onChange={e => {
                       handleTrouserWaist(e);
                     }}
                   />
                 </div>
-                <div className='row-item'>
+                <div className="row-item">
                   <TextField
-                    id='outlined-textarea'
-                    label='Trowser Fly'
-                    placeholder='In Inches'
+                    id="outlined-textarea"
+                    label="Trowser Fly"
+                    placeholder="In Inches"
                     multiline
-                    variant='outlined'
+                    variant="outlined"
                     value={trouserFly}
-                    onChange={(e) => {
+                    onChange={e => {
                       handleTrouserFly(e);
                     }}
                   />
                 </div>
               </div>
-              <div className='measurement-row-3'>
-                <div className='row-item'>
+              <div className="measurement-row-3">
+                <div className="row-item">
                   <TextField
-                    id='outlined-textarea'
-                    label='Trouser Length'
-                    placeholder='In Inches'
+                    id="outlined-textarea"
+                    label="Trouser Length"
+                    placeholder="In Inches"
                     multiline
-                    variant='outlined'
+                    variant="outlined"
                     value={trouserLength}
-                    onChange={(e) => {
+                    onChange={e => {
                       handleTrouserLength(e);
                     }}
                   />
                 </div>
-                <div className='row-item'>
+                <div className="row-item">
                   <TextField
-                    id='outlined-textarea'
-                    label='Trowser Hip'
-                    placeholder='In Inches'
+                    id="outlined-textarea"
+                    label="Trowser Hip"
+                    placeholder="In Inches"
                     multiline
-                    variant='outlined'
+                    variant="outlined"
                     value={trouserHip}
-                    onChange={(e) => {
+                    onChange={e => {
                       handleTrouserHip(e);
                     }}
                   />
                 </div>
               </div>
-              <div className='measurement-row-3'>
-                <div className='row-item'>
+              <div className="measurement-row-3">
+                <div className="row-item">
                   <TextField
-                    id='outlined-textarea'
-                    label='Trouser Thy'
-                    placeholder='In Inches'
+                    id="outlined-textarea"
+                    label="Trouser Thy"
+                    placeholder="In Inches"
                     multiline
-                    variant='outlined'
+                    variant="outlined"
                     value={trouserThy}
-                    onChange={(e) => {
+                    onChange={e => {
                       handleTrouserThy(e);
                     }}
                   />
                 </div>
-                <div className='row-item'>
+                <div className="row-item">
                   <TextField
-                    id='outlined-textarea'
-                    label='Trowser Bottom'
-                    placeholder='In Inches'
+                    id="outlined-textarea"
+                    label="Trowser Bottom"
+                    placeholder="In Inches"
                     multiline
-                    variant='outlined'
+                    variant="outlined"
                     value={trouserBottom}
-                    onChange={(e) => {
+                    onChange={e => {
                       handleTrouserBottom(e);
                     }}
                   />
                 </div>
               </div>
-              <div className='measurement-row-4'>
-                <div className='row-item'>
+              <div className="measurement-row-4">
+                <div className="row-item">
                   <TextField
-                    id='outlined-textarea'
-                    label='Trouser Knee'
-                    placeholder='In Inches'
+                    id="outlined-textarea"
+                    label="Trouser Knee"
+                    placeholder="In Inches"
                     multiline
-                    variant='outlined'
+                    variant="outlined"
                     value={trouserKnee}
-                    onChange={(e) => {
+                    onChange={e => {
                       handleTrouserKnee(e);
                     }}
                   />
                 </div>
               </div>
-              <div className='measurement-row-4'>
-                <div className='row-item'>
+              <div className="measurement-row-4">
+                <div className="row-item">
                   <TextField
-                    id='outlined-textarea'
-                    label='Other Details'
-                    placeholder='Anything else you want to enter?'
+                    id="outlined-textarea"
+                    label="Other Details"
+                    placeholder="Anything else you want to enter?"
                     multiline
                     rows={6}
                     fullWidth={10}
-                    variant='outlined'
+                    variant="outlined"
                     value={other}
-                    onChange={(e) => {
+                    onChange={e => {
                       handleOther(e);
                     }}
                   />
                 </div>
               </div>
-              <div className='measurement-row-5'>
-                <h4 id='quantity-heading'>Quantity</h4>
-                <div className='row-item'>
+              <div className="measurement-row-5">
+                <h4 id="quantity-heading">Quantity</h4>
+                <div className="row-item">
                   <button
-                    id='quantity-minus'
-                    onClick={(e) => {
+                    id="quantity-minus"
+                    onClick={e => {
                       e.preventDefault();
                       if (quantity === 1) {
-                        toast.error("Cannot decrement more");
+                        toast.error('Cannot decrement more');
                       } else {
                         setQuantity(quantity - 1);
                       }
-                    }}
-                  >
+                    }}>
                     -
                   </button>
-                  <span id='quantity'>{quantity}</span>
+                  <span id="quantity">{quantity}</span>
                   <button
-                    id='quantity-plus'
-                    onClick={(e) => {
+                    id="quantity-plus"
+                    onClick={e => {
                       e.preventDefault();
                       setQuantity(quantity + 1);
-                    }}
-                  >
+                    }}>
                     +
                   </button>
                 </div>
               </div>
-              <div className='measurement-row-5'>
+              <div className="measurement-row-5">
                 <button
-                  id='shopping'
-                  onClick={(e) => {
+                  id="shopping"
+                  onClick={e => {
                     submitForm(cred.email, item.id, item.price);
-                  }}
-                >
+                  }}>
                   Add To Cart
                 </button>
 
-                <Link to='/shop'>
-                  <button id='checkout'>Continue Shopping</button>
+                <Link to="/shop">
+                  <button id="checkout">Continue Shopping</button>
                 </Link>
               </div>
             </div>

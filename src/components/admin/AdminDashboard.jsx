@@ -1,19 +1,21 @@
-import React, { Fragment, useState, useEffect } from "react";
-import { Switch, Route, Redirect } from "react-router-dom";
+import React, {Fragment, useState, useEffect} from 'react';
 
-import "./Admin.css";
-import AddUser from "./AddUser";
-import EditUser from "./EditUser";
-import DeleteUser from "./DeleteUser";
-import AdminLogin from "./AdminSignin";
+import {toast} from 'react-toastify';
+import './Admin.css';
+import AddProducts from './AddProducts';
 
-const AdminDashboard = () => {
+import logo from '../assets/crown.svg';
+toast.configure();
+const AdminDashboard = ({setAdminAuth}) => {
   const checkAuthenticated = async () => {
     try {
-      const res = await fetch("http://localhost:5000/authentication/verify", {
-        method: "POST",
-        headers: { jwt_token: localStorage.token },
-      });
+      const res = await fetch(
+        'http://localhost:5000/admin/authentication/verify',
+        {
+          method: 'POST',
+          headers: {admin_jwt_token: localStorage.admin_token},
+        }
+      );
 
       const parseRes = await res.json();
 
@@ -29,71 +31,34 @@ const AdminDashboard = () => {
 
   const [isAuthenticated, setIsAuthenticated] = useState(false);
 
-  const setAuth = (boolean) => {
-    setIsAuthenticated(boolean);
+  const logout = async e => {
+    e.preventDefault();
+    try {
+      localStorage.removeItem('admin_token');
+      setAdminAuth(false);
+      toast.success('Admin Logged Out');
+      window.location.replace('/admin');
+    } catch (err) {
+      console.error(err.message);
+    }
   };
 
   return (
     <Fragment>
       <div className="AdminDashboard-wrapper">
-        <div className="header"></div>
-        <Switch>
-          <Route
-            exact
-            path="/admin/login"
-            render={(props) =>
-              !isAuthenticated ? (
-                <AdminLogin {...props} setAuth={setAuth} />
-              ) : (
-                <Redirect to="/admin" />
-              )
-            }
-          />
-          <Route
-            exact
-            path="/admin"
-            render={(props) =>
-              isAuthenticated ? (
-                <AddUser {...props} setAuth={setAuth} />
-              ) : (
-                <Redirect to="/admin/login" />
-              )
-            }
-          />
-          <Route
-            exact
-            path="/admin/add-user"
-            render={(props) =>
-              isAuthenticated ? (
-                <AddUser {...props} setAuth={setAuth} />
-              ) : (
-                <Redirect to="/admin/login" />
-              )
-            }
-          />
-          <Route
-            exact
-            path="/admin/edit-user"
-            render={(props) =>
-              isAuthenticated ? (
-                <EditUser {...props} setAuth={setAuth} />
-              ) : (
-                <Redirect to="/admin/login" />
-              )
-            }
-          />
-          <Route
-            exact
-            path="/admin/delete-user"
-            render={(props) =>
-              isAuthenticated ? (
-                <DeleteUser {...props} setAuth={setAuth} />
-              ) : (
-                <Redirect to="/admin/login" />
-              )
-            }
-          />
-        </Switch>
+        <header className="Header-wrapper">
+          <div className="">
+            <img src={logo} width="100" alt="logo"></img>
+          </div>
+          <div className="header-buttons">
+            <ul>
+              <li onClick={e => logout(e)}>Logout</li>
+            </ul>
+          </div>
+        </header>
+        <div className="middle-wrapper">
+          <AddProducts />
+        </div>
       </div>
     </Fragment>
   );

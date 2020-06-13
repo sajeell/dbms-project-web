@@ -1,6 +1,6 @@
-body {
+/* body {
   color: black;
-}
+} */
 
 section {
   margin-left: 6%;
@@ -33,7 +33,83 @@ header ul li {
   margin-top: 23px;
 }
 
-.AdminSignin-wrapper{
+.AdminSignin-wrapper {
   width: 350px;
   margin-left: 400px;
+}
+
+#AddProductForm {
+  display: flex;
+  flex-direction: column;
+}
+
+.add-product-row {
+  display: flex;
+  margin-bottom: 10px;
+}
+
+#name {
+  height: 32px;
+  padding: 5px;
+  width: 300px;
+}
+
+#description {
+  height: 80px;
+  padding: 5px;
+  width: 300px;
+}
+
+#stock {
+  height: 32px;
+  margin-right: 5px;
+  padding: 5px;
+  width: 145px;
+}
+
+#stock {
+  height: 32px;
+  margin-right: 5px;
+  padding: 5px;
+  width: 145px;
+}
+
+#pictureLink {
+  height: 32px;
+  padding: 5px;
+  width: 149px;
+}
+
+#categoryID {
+  height: 32px;
+  margin-right: 5px;
+  padding: 5px;
+  width: 145px;
+}
+
+#price {
+  height: 32px;
+  padding: 5px;
+  width: 149px;
+}
+
+#add-product-button {
+  padding: 5px;
+  background-color: black;
+  color: white;
+  border: 0;
+  width: 90px;
+  height: 40px;
+  margin-left: 100px;
+}
+
+.AddProduct-wrapper {
+  
+  margin-top: 10px;
+  margin-left: 500px;
+}
+
+#addProductHeading{
+  margin-left: 37px;
+  font-size: 40px;
 }

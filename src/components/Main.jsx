@@ -1,5 +1,7 @@
-import React from "react";
-import logo from "./assets/crown.svg";
+import React from 'react';
+import logo from './assets/crown.svg';
+
+import './LandingPage.css';
 
 const Main = () => {
   return (

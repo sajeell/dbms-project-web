@@ -1,11 +1,11 @@
 import React, { Fragment, useState } from "react";
 import { Link } from "react-router-dom";
-
-import "./Admin.css";
-
 import { toast } from "react-toastify";
 
-const AdminLogin = ({ setAuth }) => {
+import 'react-toastify/dist/ReactToastify.min.css';
+import 'react-toastify/dist/ReactToastify.css';
+toast.configure();
+const AdminSignin = ({ setAdminAuth }) => {
   const [inputs, setInputs] = useState({
     email: "",
     password: "",
@@ -19,9 +19,10 @@ const AdminLogin = ({ setAuth }) => {
   const onSubmitForm = async (e) => {
     e.preventDefault();
     try {
+
       const body = { email, password };
       const response = await fetch(
-        "http://localhost:5000/authentication/login",
+        "http://localhost:5000/admin/authentication/login",
         {
           method: "POST",
           headers: {
@@ -33,12 +34,12 @@ const AdminLogin = ({ setAuth }) => {
 
       const parseRes = await response.json();
 
-      if (parseRes.jwtToken) {
-        localStorage.setItem("token", parseRes.jwtToken);
-        setAuth(true);
-        toast.success("Logged in Successfully");
+      if (parseRes.adminjwtToken) {
+        localStorage.setItem("admin_token", parseRes.adminjwtToken);
+        setAdminAuth(true);
+        toast.success("Admin Logged in Successfully");
       } else {
-        setAuth(false);
+        setAdminAuth(false);
         toast.error(parseRes);
       }
     } catch (err) {
@@ -48,31 +49,39 @@ const AdminLogin = ({ setAuth }) => {
 
   return (
     <Fragment>
-      <div className="AdminSignin-wrapper">
-        <h1 className="m-5 text-center">Admin Login</h1>
+      <div
+        className='AdminSignin-wrapper'
+        style={{ width: "30%", marginLeft: "35%", marginBottom: "10.5%" }}
+      >
+        <h1 className='m-5 text-center'>Admin Login</h1>
         <form onSubmit={onSubmitForm}>
           <input
-            type="text"
-            name="email"
+            type='text'
+            name='email'
             value={email}
-            placeholder="Email Address"
+            placeholder='Email Address'
             onChange={(e) => onChange(e)}
-            className="form-control my-3"
+            className='form-control my-3'
           />
           <input
-            type="password"
-            name="password"
-            placeholder="Password"
+            type='password'
+            name='password'
             value={password}
+            placeholder='Password'
             onChange={(e) => onChange(e)}
-            className="form-control my-3"
+            className='form-control my-3'
           />
-          <button className="btn btn-success btn-block">Submit</button>
+          <button className='btn btn-success btn-block'>Submit</button>
         </form>
-        <Link to="/register">register</Link>
+        <br />
+        <br />
+        <p>
+          Don't have an Account? <Link to='/admin/register'>Register</Link> here
+        </p>
+        <br />
       </div>
     </Fragment>
   );
 };
 
-export default AdminLogin;
+export default AdminSignin;

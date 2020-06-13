@@ -16,7 +16,6 @@ header {
 
 header div {
   font-size: 20px;
-  
 }
 
 header ul li {
@@ -59,15 +58,6 @@ span {
   margin-top: 23px;
 }
 
-.LandingPage-wrapper {
-  margin-bottom: 100px;
-}
-
-.particles {
-  position: fixed;
-  right: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  z-index: -1;
+#main-logo-lg {
+  margin-bottom: 75px;
 }

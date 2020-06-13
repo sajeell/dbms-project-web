@@ -10,8 +10,8 @@ import 'react-toastify/dist/ReactToastify.min.css';
 ReactDOM.render(
   <React.StrictMode>
     <Router forceRefresh={false}>
-      <Cube time={700} />
       <App />
+      <Cube time={600} />
     </Router>
   </React.StrictMode>,
   document.getElementById('root')

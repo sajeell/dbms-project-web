@@ -40,10 +40,13 @@ const rows = [
 
 const invoiceSubtotal = subtotal(rows);
 const invoiceTaxes = TAX_RATE * invoiceSubtotal;
-const invoiceTotal = invoiceTaxes + invoiceSubtotal;
+// const invoiceTotal = invoiceTaxes + invoiceSubtotal;
 toast.configure();
 const Cart = () => {
   const [credential, setCredential] = useState([]);
+  const [cart, setCart] = useState([]);
+  const [totalAmount, setTotalAmount] = useState(0);
+  const classes = useStyles();
 
   const getProfile = async () => {
     try {
@@ -59,9 +62,6 @@ const Cart = () => {
       console.log('Error in getting profile');
     }
   };
-  useEffect(() => {
-    getProfile();
-  }, []);
 
   const deleteCartItem = async id => {
     try {
@@ -78,10 +78,10 @@ const Cart = () => {
     }
   };
 
-  const [cart, setCart] = useState([]);
   const getCartItems = async email => {
     try {
-      const res = await fetch(`http://localhost:5000/cart/bahria@edu.pk`);
+      setTotalAmount(0);
+      const res = await fetch(`http://localhost:5000/cart/${email}`);
       const parseData = await res.json();
       setCart(parseData);
     } catch (error) {
@@ -89,8 +89,10 @@ const Cart = () => {
       console.error('Error in getting cart items');
     }
   };
-  const classes = useStyles();
 
+  useEffect(() => {
+    getProfile();
+  }, []);
   return (
     <div className="Cart-wrapper">
       {credential.map(item => (
@@ -146,19 +148,8 @@ const Cart = () => {
 
                 <TableRow>
                   <TableCell rowSpan={3} />
-                  <TableCell colSpan={2}>Subtotal</TableCell>
-                  <TableCell align="right">{invoiceSubtotal}</TableCell>
-                </TableRow>
-                <TableRow>
-                  <TableCell>Tax</TableCell>
-                  <TableCell align="right">{`${(TAX_RATE * 100).toFixed(
-                    0
-                  )} %`}</TableCell>
-                  <TableCell align="right">{invoiceTaxes}</TableCell>
-                </TableRow>
-                <TableRow>
                   <TableCell colSpan={2}>Total</TableCell>
-                  <TableCell align="right">{invoiceTotal}</TableCell>
+                  <TableCell align="right">{parseFloat(totalAmount)}</TableCell>
                 </TableRow>
               </TableBody>
             </Table>

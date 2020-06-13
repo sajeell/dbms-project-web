@@ -214,6 +214,18 @@ const WomenDressDetails = () => {
           <div className="DressDetails-wrapper" key={item.id}>
             <div className="image">
               <img alt="Dress" src={item.picture_link} width="420px"></img>
+              <div className="product-details">
+                <p></p>
+                <p>
+                  Title: <strong>{item.name}</strong>
+                </p>
+                <p>
+                  Price: <strong>{item.price}</strong>
+                </p>
+                <p>
+                  Description: <strong>{item.description}</strong>
+                </p>
+              </div>
             </div>
 
             <div className="measurements">

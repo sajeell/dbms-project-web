@@ -7,6 +7,9 @@ import AddProducts from './AddProducts';
 import logo from '../assets/crown.svg';
 toast.configure();
 const AdminDashboard = ({setAdminAuth}) => {
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [orders, setOrders] = useState([]);
+
   const checkAuthenticated = async () => {
     try {
       const res = await fetch(
@@ -25,11 +28,46 @@ const AdminDashboard = ({setAdminAuth}) => {
     }
   };
 
+  const getAllOrders = async () => {
+    try {
+      const response = await fetch('http://localhost:5000/orders');
+      const jsonData = await response.json(); // Parser
+      setOrders(jsonData);
+    } catch (error) {
+      console.log(`Error getting all orders: ${error}`);
+    }
+  };
+
+  const updateStatus = async (id, status) => {
+    try {
+      if (status == 'delivered') {
+        toast.error('Order is already delivered');
+        return;
+      }
+      const response = await fetch(
+        `http://localhost:5000/status/delivered/${id}`,
+        {
+          method: 'PUT',
+          headers: {
+            'Content-type': 'application/json',
+          },
+        }
+      );
+      const jsonData = await response.json(); // Parser
+      window.location.reload();
+      toast.success('Order is succesfully set to delivered ');
+    } catch (error) {
+      console.log(`Error changing status to delivered: ${error}`);
+    }
+  };
+
   useEffect(() => {
     checkAuthenticated();
   }, []);
 
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  useEffect(() => {
+    getAllOrders();
+  }, []);
 
   const logout = async e => {
     e.preventDefault();
@@ -57,7 +95,46 @@ const AdminDashboard = ({setAdminAuth}) => {
           </div>
         </header>
         <div className="middle-wrapper">
-          <AddProducts />
+          <div className="add-products-wrapper">
+            <AddProducts />
+          </div>
+          <div className="orders">
+            <table>
+              <tbody id="all-orders-table">
+                <tr>
+                  <th>ID</th>
+                  <th>Customer Email</th>
+                  <th>Address</th>
+                  <th>City</th>
+                  <th>Postal Code</th>
+                  <th>Contact</th>
+                  <th>Ordered Date</th>
+                  <th>Delivered Date</th>
+                  <th>Status</th>
+                </tr>
+
+                {orders.map(order => (
+                  <tr key={order.id}>
+                    <td>{order.id}</td>
+                    <td>{order.customer_email}</td>
+                    <td>{order.address}</td>
+                    <td>{order.postal_code}</td>
+                    <td>{order.city}</td>
+                    <td>{order.contact_num}</td>
+                    <td>{order.ordered_date}</td>
+                    <td>{order.delivered_date}</td>
+                    <td
+                      id="order_status"
+                      onClick={e => {
+                        updateStatus(order.id, order.status);
+                      }}>
+                      {order.status}
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
     </Fragment>

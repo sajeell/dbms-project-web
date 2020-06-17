@@ -7,9 +7,9 @@ import AddProducts from './AddProducts';
 import logo from '../assets/crown.svg';
 toast.configure();
 const AdminDashboard = ({setAdminAuth}) => {
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [orders, setOrders] = useState([]);
-
+  
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
   const checkAuthenticated = async () => {
     try {
       const res = await fetch(
